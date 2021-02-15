@@ -11,60 +11,36 @@ public class EntityMovement : MonoBehaviour
         Left,
         Right
     }
-    public readonly float tileSize = 1;
-    public float updateFrequency = 0.5f;
-
+    public float speed = 1;
     public Direction direction;
 
-    private float elapsedTime = 0;
-    private int maxCollisions = 3;
+    private Rigidbody2D rb2d;
 
-    // Start is called before the first frame update
     void Start()
     {
-
+        this.rb2d = GetComponent<Rigidbody2D>();
+        this.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        this.elapsedTime += Time.deltaTime;
-        if (this.elapsedTime >= this.updateFrequency)
+        Vector2 move = new Vector2();
+        switch (this.direction)
         {
-            this.elapsedTime -= this.updateFrequency;
-
-            Vector2 move = new Vector2();
-            switch (this.direction)
-            {
-                case Direction.Up:
-                    move.y = this.tileSize;
-                    break;
-                case Direction.Down:
-                    move.y = -this.tileSize;
-                    break;
-                case Direction.Left:
-                    move.x = -this.tileSize;
-                    break;
-                case Direction.Right:
-                    move.x = this.tileSize;
-                    break;
-            }
-
-            RaycastHit2D[] collisions = new RaycastHit2D[this.maxCollisions];
-            GetComponent<BoxCollider2D>().Cast(move, collisions, this.tileSize);
-            bool hitWall = false;
-            foreach (var collision in collisions)
-            {
-                if (collision && collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
-                {
-                    hitWall = true;
-                }
-            };
-            if (!hitWall)
-            {
-                this.transform.Translate(move);
-            }
+            case Direction.Up:
+                move.y = this.speed;
+                break;
+            case Direction.Down:
+                move.y = -this.speed;
+                break;
+            case Direction.Left:
+                move.x = -this.speed;
+                break;
+            case Direction.Right:
+                move.x = this.speed;
+                break;
         }
+        this.rb2d.velocity = move;
     }
 
     public void changeDirection(Direction direction)
