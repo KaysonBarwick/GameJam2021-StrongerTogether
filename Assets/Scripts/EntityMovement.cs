@@ -42,7 +42,7 @@ public class EntityMovement : MonoBehaviour
         }
     }
 
-    void changeDirection(Direction direction)
+    public void changeDirection(Direction direction)
     {
         this.direction = direction;
     }
