@@ -14,38 +14,75 @@ public class EntityMovement : MonoBehaviour
     public float speed = 1;
     public Direction direction;
 
-    private Rigidbody2D rb2d;
+    private Direction nextDirection;
+    private Rigidbody2D rigidbody2D;
+    private BoxCollider2D boxCollider2D;
+    public ContactFilter2D wallFilter;
 
     void Start()
     {
-        this.rb2d = GetComponent<Rigidbody2D>();
-        this.rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
+        this.nextDirection = this.direction;
+        this.boxCollider2D = GetComponent<BoxCollider2D>();
+
+        this.rigidbody2D = GetComponent<Rigidbody2D>();
+        this.rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void FixedUpdate()
     {
-        Vector2 move = new Vector2();
-        switch (this.direction)
+        if (this.direction != this.nextDirection)
+        {
+            RaycastHit2D[] collisions = new RaycastHit2D[3];
+            bool hitWall = this.boxCollider2D.Cast(getDirectionVector(this.nextDirection), this.wallFilter, collisions, this.boxCollider2D.size.x / 2) > 0;
+            if (!hitWall) { this.direction = this.nextDirection; }
+        }
+        this.rigidbody2D.velocity = getDirectionVector(this.direction);
+    }
+
+    public Vector2 getDirectionVector(Direction direction)
+    {
+        switch (direction)
         {
             case Direction.Up:
-                move.y = this.speed;
-                break;
+                return Vector2.up * this.speed;
             case Direction.Down:
-                move.y = -this.speed;
-                break;
+                return Vector2.down * this.speed;
             case Direction.Left:
-                move.x = -this.speed;
-                break;
+                return Vector2.left * this.speed;
             case Direction.Right:
-                move.x = this.speed;
-                break;
+                return Vector2.right * this.speed;
         }
-        this.rb2d.velocity = move;
+        return new Vector2(0, 0);
     }
 
     public void changeDirection(Direction direction)
     {
-        this.direction = direction;
+        switch (direction)
+        {
+            case Direction.Up:
+                if (this.direction != Direction.Down)
+                {
+                    this.nextDirection = Direction.Up;
+                }
+                break;
+            case Direction.Down:
+                if (this.direction != Direction.Up)
+                {
+                    this.nextDirection = Direction.Down;
+                }
+                break;
+            case Direction.Left:
+                if (this.direction != Direction.Right)
+                {
+                    this.nextDirection = Direction.Left;
+                }
+                break;
+            case Direction.Right:
+                if (this.direction != Direction.Left)
+                {
+                    this.nextDirection = Direction.Right;
+                }
+                break;
+        }
     }
-
 }
