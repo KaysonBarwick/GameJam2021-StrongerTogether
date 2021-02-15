@@ -31,13 +31,13 @@ public class EntityMovement : MonoBehaviour
         if(this.elapsedTime >= this.updateFrequency){
             this.elapsedTime -= this.updateFrequency;
             if(this.direction == Direction.Up){
-                this.transform.Translate(new Vector3(0,this.tileSize,0));
+                this.transform.Translate(new Vector3(0,this.tileSize,0), Space.World);
             } else if(this.direction == Direction.Down){
-                this.transform.Translate(new Vector3(0,-this.tileSize,0));
+                this.transform.Translate(new Vector3(0,-this.tileSize,0), Space.World);
             } else if(this.direction == Direction.Left){
-                this.transform.Translate(new Vector3(-this.tileSize,0,0));
+                this.transform.Translate(new Vector3(-this.tileSize,0,0), Space.World);
             } else if(this.direction == Direction.Right){
-                this.transform.Translate(new Vector3(this.tileSize,0,0));
+                this.transform.Translate(new Vector3(this.tileSize,0,0), Space.World);
             }
         }
     }
