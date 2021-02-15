@@ -17,6 +17,7 @@ public class EntityMovement : MonoBehaviour
     public Direction direction;
 
     private float elapsedTime = 0;
+    private int maxCollisions = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -28,16 +29,40 @@ public class EntityMovement : MonoBehaviour
     void Update()
     {
         this.elapsedTime += Time.deltaTime;
-        if(this.elapsedTime >= this.updateFrequency){
+        if (this.elapsedTime >= this.updateFrequency)
+        {
             this.elapsedTime -= this.updateFrequency;
-            if(this.direction == Direction.Up){
-                this.transform.Translate(new Vector3(0,this.tileSize,0));
-            } else if(this.direction == Direction.Down){
-                this.transform.Translate(new Vector3(0,-this.tileSize,0));
-            } else if(this.direction == Direction.Left){
-                this.transform.Translate(new Vector3(-this.tileSize,0,0));
-            } else if(this.direction == Direction.Right){
-                this.transform.Translate(new Vector3(this.tileSize,0,0));
+
+            Vector2 move = new Vector2();
+            switch (this.direction)
+            {
+                case Direction.Up:
+                    move.y = this.tileSize;
+                    break;
+                case Direction.Down:
+                    move.y = -this.tileSize;
+                    break;
+                case Direction.Left:
+                    move.x = -this.tileSize;
+                    break;
+                case Direction.Right:
+                    move.x = this.tileSize;
+                    break;
+            }
+
+            RaycastHit2D[] collisions = new RaycastHit2D[this.maxCollisions];
+            GetComponent<BoxCollider2D>().Cast(move, collisions, this.tileSize);
+            bool hitWall = false;
+            foreach (var collision in collisions)
+            {
+                if (collision && collision.collider.gameObject.layer == LayerMask.NameToLayer("Wall"))
+                {
+                    hitWall = true;
+                }
+            };
+            if (!hitWall)
+            {
+                this.transform.Translate(move);
             }
         }
     }
