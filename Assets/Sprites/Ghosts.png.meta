@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 3c0d4f6292ab40f419aaaa177c46e358
+guid: b171aa71e437e1e44ae926f44b8515dd
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3212801859442847008
-    second: Pacman_0
+      213: 1863864415795655316
+    second: Ghosts_0
   - first:
-      213: -6543664708499819273
-    second: Pacman_1
+      213: 7830040829578866814
+    second: Ghosts_1
   - first:
-      213: -5117255910089929328
-    second: Pacman_2
+      213: -4674499405651216221
+    second: Ghosts_2
+  - first:
+      213: -2859656250022194522
+    second: Ghosts_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pacman_0
+      name: Ghosts_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,14 +113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d2ecdd44a269c20800000000000000
-      internalID: 3212801859442847008
+      spriteID: 492bdfc9fc6cdd910800000000000000
+      internalID: 1863864415795655316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pacman_1
+      name: Ghosts_1
       rect:
         serializedVersion: 2
         x: 16
@@ -131,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f4bb901e9b3035a0800000000000000
-      internalID: -6543664708499819273
+      spriteID: e707adf26a4e9ac60800000000000000
+      internalID: 7830040829578866814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pacman_2
+      name: Ghosts_2
       rect:
         serializedVersion: 2
         x: 32
@@ -152,8 +155,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09d4256bcdadbf8b0800000000000000
-      internalID: -5117255910089929328
+      spriteID: 3a8726f9e87d02fb0800000000000000
+      internalID: -4674499405651216221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ghosts_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a293bdaac57058d0800000000000000
+      internalID: -2859656250022194522
       vertices: []
       indices: 
       edges: []

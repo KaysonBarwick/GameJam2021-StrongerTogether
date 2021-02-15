@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 3c0d4f6292ab40f419aaaa177c46e358
+guid: f5796c4aeda80e24ca885b3e9c5c5d21
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3212801859442847008
-    second: Pacman_0
+      213: 1423197779630786038
+    second: GhostEyes_0
   - first:
-      213: -6543664708499819273
-    second: Pacman_1
+      213: -8245576569895453160
+    second: GhostEyes_1
   - first:
-      213: -5117255910089929328
-    second: Pacman_2
+      213: -62824710291910766
+    second: GhostEyes_2
+  - first:
+      213: -5085817397416155023
+    second: GhostEyes_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pacman_0
+      name: GhostEyes_0
       rect:
         serializedVersion: 2
         x: 0
@@ -110,14 +113,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02d2ecdd44a269c20800000000000000
-      internalID: 3212801859442847008
+      spriteID: 6f5840417d630c310800000000000000
+      internalID: 1423197779630786038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pacman_1
+      name: GhostEyes_1
       rect:
         serializedVersion: 2
         x: 16
@@ -131,14 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f4bb901e9b3035a0800000000000000
-      internalID: -6543664708499819273
+      spriteID: 81ef81febc3d19d80800000000000000
+      internalID: -8245576569895453160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pacman_2
+      name: GhostEyes_2
       rect:
         serializedVersion: 2
         x: 32
@@ -152,8 +155,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09d4256bcdadbf8b0800000000000000
-      internalID: -5117255910089929328
+      spriteID: 29f0fe3424dc02ff0800000000000000
+      internalID: -62824710291910766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GhostEyes_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 178228ad50c8b69b0800000000000000
+      internalID: -5085817397416155023
       vertices: []
       indices: 
       edges: []
