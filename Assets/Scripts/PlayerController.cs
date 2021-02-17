@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public int lives = 3;
-    public int megaTime = 5;
+    public int megaTime = 3;
     public int coolDownTime = 3;
 
     private Color color;
