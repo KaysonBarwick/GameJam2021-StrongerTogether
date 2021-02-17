@@ -16,9 +16,9 @@ public class TreatController : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collider.tag == "Player")
+        if (other.tag == "Player")
         {
             this.eat();
         }

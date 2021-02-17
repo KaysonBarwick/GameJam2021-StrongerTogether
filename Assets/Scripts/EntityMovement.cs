@@ -55,8 +55,15 @@ public class EntityMovement : MonoBehaviour
         return new Vector2(0, 0);
     }
 
-    public void changeDirection(Direction direction)
+    public void changeDirection(Direction direction, bool force = false)
     {
+        if (force)
+        {
+            this.direction = direction;
+            this.nextDirection = direction;
+            return;
+        }
+
         switch (direction)
         {
             case Direction.Up:
