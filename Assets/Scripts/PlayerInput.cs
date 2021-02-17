@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public EntityMovement entityMovement;
+    private EntityMovement entityMovement;
     public KeyCode upKey = KeyCode.W;
     public KeyCode downKey = KeyCode.S;
     public KeyCode leftKey = KeyCode.A;
@@ -13,7 +13,7 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        this.entityMovement = GetComponent<EntityMovement>();
     }
 
     // Update is called once per frame
