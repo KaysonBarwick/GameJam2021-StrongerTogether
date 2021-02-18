@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
-  megaTime: 3
+  megaTime: 10
   coolDownTime: 3
 --- !u!1 &8338100183781290161
 GameObject:

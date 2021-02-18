@@ -15,7 +15,7 @@ public class EntityMovement : MonoBehaviour
     public Direction direction;
 
     private Direction nextDirection;
-    private Rigidbody2D rigidbody2D;
+    new private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
     public ContactFilter2D wallFilter;
 
@@ -33,7 +33,7 @@ public class EntityMovement : MonoBehaviour
         if (this.direction != this.nextDirection)
         {
             RaycastHit2D[] collisions = new RaycastHit2D[3];
-            bool hitWall = this.boxCollider2D.Cast(getDirectionVector(this.nextDirection), this.wallFilter, collisions, this.boxCollider2D.size.x / 2) > 0;
+            bool hitWall = this.boxCollider2D.Cast(getDirectionVector(this.nextDirection), this.wallFilter, collisions, 0.1f) > 0;
             if (!hitWall) { this.direction = this.nextDirection; }
         }
         this.rigidbody2D.velocity = getDirectionVector(this.direction);
@@ -64,32 +64,33 @@ public class EntityMovement : MonoBehaviour
             return;
         }
 
-        switch (direction)
-        {
-            case Direction.Up:
-                if (this.direction != Direction.Down)
-                {
-                    this.nextDirection = Direction.Up;
-                }
-                break;
-            case Direction.Down:
-                if (this.direction != Direction.Up)
-                {
-                    this.nextDirection = Direction.Down;
-                }
-                break;
-            case Direction.Left:
-                if (this.direction != Direction.Right)
-                {
-                    this.nextDirection = Direction.Left;
-                }
-                break;
-            case Direction.Right:
-                if (this.direction != Direction.Left)
-                {
-                    this.nextDirection = Direction.Right;
-                }
-                break;
-        }
+        this.nextDirection = direction;
+        // switch (direction)
+        // {
+        //     case Direction.Up:
+        //         if (this.direction != Direction.Down)
+        //         {
+        //             this.nextDirection = Direction.Up;
+        //         }
+        //         break;
+        //     case Direction.Down:
+        //         if (this.direction != Direction.Up)
+        //         {
+        //             this.nextDirection = Direction.Down;
+        //         }
+        //         break;
+        //     case Direction.Left:
+        //         if (this.direction != Direction.Right)
+        //         {
+        //             this.nextDirection = Direction.Left;
+        //         }
+        //         break;
+        //     case Direction.Right:
+        //         if (this.direction != Direction.Left)
+        //         {
+        //             this.nextDirection = Direction.Right;
+        //         }
+        //         break;
+        // }
     }
 }

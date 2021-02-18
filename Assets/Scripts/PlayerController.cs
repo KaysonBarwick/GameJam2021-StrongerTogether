@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Color color;
     private bool isMega = false;
-    private bool isOnCooldown = false;
+    private bool isOnCooldown = true;
     private float timer = 0.0f;
     private PlayerController otherPlayer;
     private PlayerInput otherInput;
