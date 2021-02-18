@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
     public int lives = 3;
     public int megaTime = 3;
     public int coolDownTime = 3;
@@ -77,7 +76,7 @@ public class PlayerController : MonoBehaviour
         this.otherInput.leftKey = otherInput.leftKey;
         this.otherInput.rightKey = otherInput.rightKey;
 
-        this.gameObject.GetComponent<SpriteRenderer>().color = new Color(0, 255, 0);
+        this.gameObject.GetComponent<Animator>().SetBool("isMega", true);
     }
 
     void split()
@@ -111,6 +110,7 @@ public class PlayerController : MonoBehaviour
 
     void startCooldown()
     {
+        this.gameObject.GetComponent<Animator>().SetBool("isMega", false);
         this.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
         this.isOnCooldown = true;
     }
