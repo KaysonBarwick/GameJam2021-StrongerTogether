@@ -7,14 +7,19 @@ public class PlayerController : MonoBehaviour
     public int lives = 3;
     public int megaTime = 3;
     public int coolDownTime = 3;
+    public int invulnerabilityTime = 1;
 
-    private Color color;
-    private bool isMega = false;
-    private bool isOnCooldown = true;
-    private float timer = 0.0f;
+    public bool isInvulnerable = true;
+
     private PlayerController otherPlayer;
     private PlayerInput otherInput;
+    private Color color;
 
+    private float megaTimer = 0.0f;
+    private float invulnerabilityTimer = 0f;
+    private bool isMega = false;
+    private bool isOnCooldown = true;
+    
     private EntityMovement player;
 
     void Start()
@@ -27,16 +32,27 @@ public class PlayerController : MonoBehaviour
     {
         if (this.isMega || this.isOnCooldown)
         {
-            this.timer += Time.deltaTime;
-            if (this.isMega && this.timer >= this.megaTime)
+            this.megaTimer += Time.deltaTime;
+            if (this.isMega && this.megaTimer >= this.megaTime)
             {
-                this.timer = 0;
+                this.megaTimer = 0;
                 this.split();
             }
-            else if (this.isOnCooldown && this.timer >= this.coolDownTime)
+            else if (this.isOnCooldown && this.megaTimer >= this.coolDownTime)
             {
-                this.timer = 0;
+                this.megaTimer = 0;
                 this.endCooldown();
+            }
+        }
+
+        // invulnerability
+        if (this.isInvulnerable)
+        {
+            this.invulnerabilityTimer += Time.deltaTime;
+            if (this.invulnerabilityTimer >= this.invulnerabilityTime)
+            {
+                this.invulnerabilityTimer = 0f;
+                this.isInvulnerable = false;
             }
         }
     }
@@ -49,7 +65,7 @@ public class PlayerController : MonoBehaviour
             {
                 other.GetComponent<EntityMovement>().respawn();
             }
-            else
+            else if (!this.isInvulnerable)
             {
                 this.die();
             }
@@ -113,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
     void startCooldown()
     {
+        this.isInvulnerable = true;
         this.gameObject.GetComponent<Animator>().SetBool("isMega", false);
         this.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
         this.isOnCooldown = true;
@@ -135,8 +152,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            this.isInvulnerable = true;
             this.player.respawn();
         }
-
     }
 }

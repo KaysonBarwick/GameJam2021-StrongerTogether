@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PacmanAnimator : MonoBehaviour
 {
+    public PlayerController playerController;
+
     private EntityMovement entityMovement;
     private SpriteRenderer spriteRenderer;
 
@@ -15,6 +17,27 @@ public class PacmanAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Color color = this.spriteRenderer.color;
+
+        if (playerController.isInvulnerable)
+        {
+            if (this.spriteRenderer.color.a < 1f)
+            {
+                color.a = 1f;
+                this.spriteRenderer.color = color;
+            }
+            else
+            {
+                color.a = 0f;
+                this.spriteRenderer.color = color;
+            }
+        }
+        else if (color.a != 1f)
+        {
+            color.a = 1f;
+            this.spriteRenderer.color = color;
+        }
+
         switch (entityMovement.direction)
         {
             case EntityMovement.Direction.Up:

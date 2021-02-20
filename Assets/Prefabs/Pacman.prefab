@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d61f504458f93458d405902c20691d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 7536818439750200191}
 --- !u!95 &6316971999187968629
 Animator:
   serializedVersion: 3
@@ -227,6 +228,8 @@ MonoBehaviour:
   lives: 3
   megaTime: 10
   coolDownTime: 3
+  invulnerabilityTime: 1
+  isInvulnerable: 1
 --- !u!1 &8338100183781290161
 GameObject:
   m_ObjectHideFlags: 0
