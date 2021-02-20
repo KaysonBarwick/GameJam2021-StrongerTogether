@@ -116,6 +116,8 @@ GameObject:
   - component: {fileID: 4994293423906082494}
   - component: {fileID: 7707602418424012937}
   - component: {fileID: 6667672074529521928}
+  - component: {fileID: 6331304998401250071}
+  - component: {fileID: 7545493520544075049}
   m_Layer: 13
   m_Name: Ghost
   m_TagString: Enemy
@@ -227,7 +229,7 @@ MonoBehaviour:
     useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 256
+      m_Bits: 33024
     minDepth: 0
     maxDepth: 0
     minNormalAngle: 0
@@ -252,6 +254,30 @@ MonoBehaviour:
     type: 3}
   eyeRight: {fileID: 1423197779630786038, guid: f5796c4aeda80e24ca885b3e9c5c5d21,
     type: 3}
+--- !u!114 &6331304998401250071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413589876291799538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017b6f3c2fd8b764cbd186b3c8ddab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7545493520544075049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413589876291799538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017b6f3c2fd8b764cbd186b3c8ddab96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1413589876551068798
 GameObject:
   m_ObjectHideFlags: 0

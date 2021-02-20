@@ -17,7 +17,7 @@ public class GhostAnimator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        entityMovement = GetComponent<EntityMovement>();
+        this.entityMovement = GetComponent<EntityMovement>();
     }
 
     // Update is called once per frame

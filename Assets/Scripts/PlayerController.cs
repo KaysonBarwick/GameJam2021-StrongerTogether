@@ -15,8 +15,11 @@ public class PlayerController : MonoBehaviour
     private PlayerController otherPlayer;
     private PlayerInput otherInput;
 
+    private EntityMovement player;
+
     void Start()
     {
+        this.player = this.GetComponent<EntityMovement>();
         this.color = this.GetComponent<SpriteRenderer>().color;
     }
 
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             if (this.isMega)
             {
-                other.transform.position = Vector2.zero;
+                other.GetComponent<EntityMovement>().respawn();
             }
             else
             {
@@ -132,7 +135,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            this.transform.position = Vector3.zero;
+            this.player.respawn();
         }
 
     }

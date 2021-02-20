@@ -13,16 +13,22 @@ public class EntityMovement : MonoBehaviour
     }
     public float speed = 1;
     public Direction direction;
+    public ContactFilter2D wallFilter;
 
+
+    public Vector3 lastTurnPosition { get; private set; }
     private Direction nextDirection;
+    private Vector2 respawnPosition;
+
     new private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
-    public ContactFilter2D wallFilter;
 
     void Start()
     {
         this.nextDirection = this.direction;
+        this.lastTurnPosition = this.transform.position;
         this.boxCollider2D = GetComponent<BoxCollider2D>();
+        this.respawnPosition = this.transform.position;
 
         this.rigidbody2D = GetComponent<Rigidbody2D>();
         this.rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
@@ -30,11 +36,10 @@ public class EntityMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (this.direction != this.nextDirection)
+        if (this.direction != this.nextDirection && !this.castHitWall(this.nextDirection))
         {
-            RaycastHit2D[] collisions = new RaycastHit2D[3];
-            bool hitWall = this.boxCollider2D.Cast(getDirectionVector(this.nextDirection), this.wallFilter, collisions, 0.1f) > 0;
-            if (!hitWall) { this.direction = this.nextDirection; }
+            this.direction = this.nextDirection;
+            this.lastTurnPosition = this.transform.position;
         }
         this.rigidbody2D.velocity = getDirectionVector(this.direction);
     }
@@ -55,7 +60,7 @@ public class EntityMovement : MonoBehaviour
         return new Vector2(0, 0);
     }
 
-    public void changeDirection(Direction direction, bool force = false)
+    public void changeDirection(Direction direction, bool force = false, bool noTurnAround = false)
     {
         if (force)
         {
@@ -64,33 +69,36 @@ public class EntityMovement : MonoBehaviour
             return;
         }
 
+        if (noTurnAround)
+        {
+            switch (direction)
+            {
+                case Direction.Up:
+                    if (this.direction == Direction.Down) { return; }
+                    break;
+                case Direction.Down:
+                    if (this.direction == Direction.Up) { return; }
+                    break;
+                case Direction.Left:
+                    if (this.direction == Direction.Right) { return; }
+                    break;
+                case Direction.Right:
+                    if (this.direction == Direction.Left) { return; }
+                    break;
+            }
+
+        }
         this.nextDirection = direction;
-        // switch (direction)
-        // {
-        //     case Direction.Up:
-        //         if (this.direction != Direction.Down)
-        //         {
-        //             this.nextDirection = Direction.Up;
-        //         }
-        //         break;
-        //     case Direction.Down:
-        //         if (this.direction != Direction.Up)
-        //         {
-        //             this.nextDirection = Direction.Down;
-        //         }
-        //         break;
-        //     case Direction.Left:
-        //         if (this.direction != Direction.Right)
-        //         {
-        //             this.nextDirection = Direction.Left;
-        //         }
-        //         break;
-        //     case Direction.Right:
-        //         if (this.direction != Direction.Left)
-        //         {
-        //             this.nextDirection = Direction.Right;
-        //         }
-        //         break;
-        // }
     }
+
+    public bool castHitWall(Direction direction)
+    {
+        return this.boxCollider2D.Cast(getDirectionVector(direction), this.wallFilter, new RaycastHit2D[3], 0.1f) > 0;
+    }
+
+    public void respawn()
+    {
+        this.transform.position = this.respawnPosition;
+    }
+
 }
