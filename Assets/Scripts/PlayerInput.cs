@@ -10,13 +10,11 @@ public class PlayerInput : MonoBehaviour
     public KeyCode leftKey = KeyCode.A;
     public KeyCode rightKey = KeyCode.D;
 
-    // Start is called before the first frame update
     void Start()
     {
         this.entityMovement = GetComponent<EntityMovement>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(this.upKey))

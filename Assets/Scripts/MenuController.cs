@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
-{ 
-	public void ChangeScene(string sceneName)
-	{
-		SceneManager.LoadScene(sceneName);
-	}
-	public void Exit()
-	{
-		Application.Quit();
-	}
+{
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
