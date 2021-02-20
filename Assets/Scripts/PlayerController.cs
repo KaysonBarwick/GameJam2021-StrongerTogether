@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public int lives = 3;
     public int megaTime = 3;
-    public int coolDownTime = 3;
+    public int coolDownDots = 3;
     public int invulnerabilityTime = 1;
 
     public bool isInvulnerable = true;
@@ -16,10 +16,11 @@ public class PlayerController : MonoBehaviour
     private Color color;
 
     private float megaTimer = 0.0f;
+    private int coolDownDotsEaten = 0;
     private float invulnerabilityTimer = 0f;
     private bool isMega = false;
     private bool isOnCooldown = true;
-    
+
     private EntityMovement player;
 
     void Start()
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
                 this.megaTimer = 0;
                 this.split();
             }
-            else if (this.isOnCooldown && this.megaTimer >= this.coolDownTime)
+            else if (this.isOnCooldown && this.coolDownDotsEaten >= this.coolDownDots)
             {
                 this.megaTimer = 0;
                 this.endCooldown();
@@ -73,13 +74,23 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "Player" && !this.isOnCooldown && !this.isMega)
         {
             this.otherPlayer = other.GetComponentInParent<PlayerController>();
-            if (this.otherPlayer.isMega)
+            if (!this.otherPlayer.isOnCooldown)
             {
-                this.gameObject.SetActive(false);
+                if (this.otherPlayer.isMega)
+                {
+                    this.gameObject.SetActive(false);
+                }
+                else
+                {
+                    this.combine();
+                }
             }
-            else
+        }
+        else if (other.tag == "Treat")
+        {
+            if (this.isOnCooldown)
             {
-                this.combine();
+                this.coolDownDotsEaten++;
             }
         }
     }
@@ -139,6 +150,7 @@ public class PlayerController : MonoBehaviour
     {
         this.gameObject.GetComponent<SpriteRenderer>().color = this.color;
         this.isOnCooldown = false;
+        this.coolDownDotsEaten = 0;
     }
 
     void die()

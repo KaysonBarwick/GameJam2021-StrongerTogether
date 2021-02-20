@@ -3247,6 +3247,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 7545493520544075049, guid: c588cfb4340a2574fb38e51bc7b8246f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7707602418424012937, guid: c588cfb4340a2574fb38e51bc7b8246f,
         type: 3}
       propertyPath: direction
@@ -21835,12 +21840,12 @@ PrefabInstance:
     - target: {fileID: 7707602418424012937, guid: c588cfb4340a2574fb38e51bc7b8246f,
         type: 3}
       propertyPath: speed
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7707602418424012937, guid: c588cfb4340a2574fb38e51bc7b8246f,
         type: 3}
       propertyPath: direction
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c588cfb4340a2574fb38e51bc7b8246f, type: 3}

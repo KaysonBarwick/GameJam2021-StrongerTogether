@@ -16,7 +16,7 @@ public class GhostTracking : MonoBehaviour
     private EntityMovement ghost;
     private float delayDistance = 0.2f;
     new private Rigidbody2D rigidbody2D;
-
+    public float velocity = 0;
 
     void Start()
     {
@@ -27,7 +27,8 @@ public class GhostTracking : MonoBehaviour
 
     void Update()
     {
-        if (Mathf.Abs(this.ghost.lastTurnPosition.magnitude - this.transform.position.magnitude) >= this.delayDistance || this.rigidbody2D.velocity.magnitude == 0)
+        this.velocity = this.rigidbody2D.velocity.magnitude;
+        if (Mathf.Abs(this.ghost.lastTurnPosition.magnitude - this.transform.position.magnitude) >= this.delayDistance || velocity <= 0.1f)
             if (true)
             {
                 List<EntityMovement.Direction> possibleDirections = new List<EntityMovement.Direction>();
@@ -35,21 +36,8 @@ public class GhostTracking : MonoBehaviour
                 possibleDirections.Add(EntityMovement.Direction.Down);
                 possibleDirections.Add(EntityMovement.Direction.Left);
                 possibleDirections.Add(EntityMovement.Direction.Right);
-                // possibleDirections.Remove(this.ghost.direction);
-                // if (this.ghost.direction != EntityMovement.Direction.Up && this.ghost.direction != EntityMovement.Direction.Down)
-                // {
-                //     Debug.Log("possible up/down");
-                //     if (!this.ghost.castHitWall(EntityMovement.Direction.Up)) { possibleDirections.Add(EntityMovement.Direction.Up); }
-                //     if (!this.ghost.castHitWall(EntityMovement.Direction.Down)) { possibleDirections.Add(EntityMovement.Direction.Down); }
-
-                // }
-                // if (this.ghost.direction != EntityMovement.Direction.Left && this.ghost.direction != EntityMovement.Direction.Right)
-                // {
-                //     Debug.Log("possible Right/Left");
-                //     if (!this.ghost.castHitWall(EntityMovement.Direction.Left)) { possibleDirections.Add(EntityMovement.Direction.Left); }
-                //     if (!this.ghost.castHitWall(EntityMovement.Direction.Right)) { possibleDirections.Add(EntityMovement.Direction.Right); }
-                // }
                 EntityMovement.Direction nextDirection = possibleDirections[Random.Range(0, possibleDirections.Count)];
+                Debug.Log(nextDirection);
                 this.ghost.changeDirection(nextDirection, false, true);
             }
     }
