@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
     {
         this.isInvulnerable = true;
         this.gameObject.GetComponent<Animator>().SetBool("isMega", false);
-        this.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+        this.GetComponent<SpriteRenderer>().color = new Color(this.color.r + 0.5f, this.color.g - 0.2f, this.color.b - 0.2f);
         this.isOnCooldown = true;
     }
 

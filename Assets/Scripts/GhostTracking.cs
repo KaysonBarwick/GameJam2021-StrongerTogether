@@ -37,7 +37,6 @@ public class GhostTracking : MonoBehaviour
                 possibleDirections.Add(EntityMovement.Direction.Left);
                 possibleDirections.Add(EntityMovement.Direction.Right);
                 EntityMovement.Direction nextDirection = possibleDirections[Random.Range(0, possibleDirections.Count)];
-                Debug.Log(nextDirection);
                 this.ghost.changeDirection(nextDirection, false, true);
             }
     }

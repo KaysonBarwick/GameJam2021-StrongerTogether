@@ -226,8 +226,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 3
-  megaTime: 10
-  coolDownTime: 3
+  megaTime: 8
+  coolDownDots: 5
   invulnerabilityTime: 1
   isInvulnerable: 1
 --- !u!1 &8338100183781290161
