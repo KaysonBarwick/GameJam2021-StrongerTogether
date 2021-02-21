@@ -227,9 +227,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 3
   megaTime: 8
-  coolDownDots: 5
+  coolDownDots: 7
   invulnerabilityTime: 1
   isInvulnerable: 1
+  winScreen: {fileID: 0}
+  gameOverScreen: {fileID: 0}
 --- !u!1 &8338100183781290161
 GameObject:
   m_ObjectHideFlags: 0

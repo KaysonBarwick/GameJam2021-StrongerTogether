@@ -89,7 +89,6 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Treat")
         {
-            Debug.Log(FindObjectsOfType<TreatController>().Length);
             if (FindObjectsOfType<TreatController>().Length <= 1)
             {
                 this.winScreen.ShowMenu();
