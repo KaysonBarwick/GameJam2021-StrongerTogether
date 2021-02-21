@@ -10,7 +10,8 @@ public class PlayerController : MonoBehaviour
     public int invulnerabilityTime = 1;
 
     public bool isInvulnerable = true;
-
+    public MenuController winScreen;
+    public MenuController gameOverScreen;
     private PlayerController otherPlayer;
     private PlayerInput otherInput;
     private Color color;
@@ -88,6 +89,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.tag == "Treat")
         {
+            Debug.Log(FindObjectsOfType<TreatController>().Length);
+            if (FindObjectsOfType<TreatController>().Length <= 1)
+            {
+                this.winScreen.ShowMenu();
+                Time.timeScale = 0;
+            }
             if (this.isOnCooldown)
             {
                 this.coolDownDotsEaten++;
@@ -159,8 +166,13 @@ public class PlayerController : MonoBehaviour
         // Play death animation
         if (lives <= 0)
         {
+            PlayerController[] players = FindObjectsOfType<PlayerController>();
+            if (players.Length <= 1)
+            {
+                this.gameOverScreen.ShowMenu();
+                Time.timeScale = 0;
+            }
             Destroy(this.gameObject);
-            // Gameover
         }
         else
         {
