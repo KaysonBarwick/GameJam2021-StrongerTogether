@@ -557,7 +557,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Artwork by Jayden Barwick
 
-    Game made by Kayson & Jayden Barwick'
+    Level Design by Kayson Barwick
+
+    Game
+    made by Kayson Barwick & Jayden Barwick'
 --- !u!222 &1426845044
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -673,6 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d66e8f3ad8adf540b78ea584e743757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hideMenu: 0
 --- !u!4 &1929758076
 Transform:
   m_ObjectHideFlags: 0
